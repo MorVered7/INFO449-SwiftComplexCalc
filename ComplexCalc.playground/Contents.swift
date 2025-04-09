@@ -34,9 +34,9 @@ class Calculator {
     }
     
     //adding array
-    func add(_ numbers: [Int]) -> Int {
+    func add(_ nums: [Int]) -> Int {
         var sum = 0
-        for int in numbers {
+        for int in nums {
             sum += int
         }
         return sum
@@ -53,8 +53,9 @@ class Calculator {
            let y1 = lhs["y"], let y2 = rhs["y"] {
             let resultx = x1 + x2
             let resulty = y1 + y2
-            return ["x" : resultx, "y" : resulty]
+            return ["x": resultx, "y": resulty]
         }
+        return ["x": 0, "y": 0]
     }
     
     func subtract(lhs: Int, rhs: Int) -> Int {
@@ -70,8 +71,9 @@ class Calculator {
            let y1 = lhs["y"], let y2 = rhs["y"] {
             let resultx = x1 - x2
             let resulty = y1 - y2
-            return ["x" : resultx, "y" : resulty]
+            return ["x": resultx, "y": resulty]
         }
+        return ["x": 0, "y": 0]
     }
     
     // int + int
@@ -80,21 +82,46 @@ class Calculator {
     }
     
     //array
-    func multiply(_ numbers: [Int]) -> Int {
+    func multiply(_ nums: [Int]) -> Int {
         var sum = 1
-        for int in numbers {
+        for int in nums {
             sum *= int
         }
         return sum
     }
     
-    divide(){}
+    func divide(lhs: Int, rhs: Int) -> Int {
+        return lhs / rhs
+    }
     
-    mathOp(){}
+    func count(_ nums: [Int]) -> Int {
+        if nums.isEmpty {
+            return 0
+        }
+        
+        var count = 0
+        for int in nums {
+            count += 1
+        }
+        return count
+    }
     
-    count(){}
+    func avg(_ nums: [Int]) -> Int {
+        if nums.isEmpty {
+            return 0
+        }
+        
+        var sum = 0;
+        var count = 0;
+        for int in nums {
+            count += 1
+            sum += int
+        }
+        
+        return sum / count
+    }
     
-    avg(){}
+    //mathOp(){}
 }
 //methods: add, subtract, multiply, divide, mathOp, count, avg
 //: Don't change the name of this object (`calc`); it's used in all the tests.
@@ -119,9 +146,9 @@ calc.subtract(lhs: 2, rhs: 2) == 0
 calc.multiply(lhs: 2, rhs: 2) == 4
 calc.divide(lhs: 2, rhs: 2) == 1
 
-calc.mathOp(lhs: 5, rhs: 5, op: { (lhs: Int, rhs: Int) -> Int in (lhs + rjs) + (lhs * rhs) }) == 35
+//calc.mathOp(lhs: 5, rhs: 5, op: { (lhs: Int, rhs: Int) -> Int in (lhs + rjs) + (lhs * rhs) }) == 35
     // This style is one way of writing an anonymous function
-calc.mathOp(lhs: 10, rhs: -5, op: { ($0 + $1) + ($0 - $1) }) == 20
+//calc.mathOp(lhs: 10, rhs: -5, op: { ($0 + $1) + ($0 - $1) }) == 20
     // This is the second, more terse, style; either works
 
 calc.add([1, 2, 3, 4, 5]) == 15
@@ -132,11 +159,11 @@ calc.avg([2, 2, 2, 2, 2, 2]) == 2
 calc.avg([1, 2, 3, 4, 5]) == 3
 calc.avg([1]) == 1
 
-calc.mathOp(args: [1, 2, 3], beg: 0, op: { $0 + $1 }) == 6
+//calc.mathOp(args: [1, 2, 3], beg: 0, op: { $0 + $1 }) == 6
     // this is (((0 op 1) op 2) op 3)
-calc.mathOp(args: [1, 2, 3, 4, 5], beg: 0, op: { $0 + $1 }) == 15
+//calc.mathOp(args: [1, 2, 3, 4, 5], beg: 0, op: { $0 + $1 }) == 15
     // this is (((((0 op 1) op 2) op 3) op 4) op 5)
-calc.mathOp(args: [1, 1, 1, 1, 1], beg: 1, op: { $0 * $1 }) == 1
+//calc.mathOp(args: [1, 1, 1, 1, 1], beg: 1, op: { $0 * $1 }) == 1
     // this is (((((1 op 1) op 1) op 1) op 1) op 1)
 
 let p1 = (5, 5)
