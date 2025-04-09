@@ -28,8 +28,75 @@ print("Welcome back to the UW Calculator")
 //: IMPORTANT: If any tests are commented out, you will be graded a zero (0)! You should never be in the habit of eliminating tests to make the code pass.
 //:
 class Calculator {
+    //adding 2 ints
+    func add(lhs: Int, rhs: Int) -> Int {
+        return lhs + rhs
+    }
+    
+    //adding array
+    func add(_ numbers: [Int]) -> Int {
+        var sum = 0
+        for int in numbers {
+            sum += int
+        }
+        return sum
+    }
+    
+    //adding tuples
+    func add(lhs: (Int, Int), rhs: (Int, Int)) -> (Int, Int) {
+        return (lhs.0 + rhs.0, lhs.1 + rhs.1)
+    }
+    
+    //adding two dicts
+    func add(lhs: [String: Int], rhs: [String: Int]) -> [String: Int] {
+        if let x1 = lhs["x"], let x2 = rhs["x"],
+           let y1 = lhs["y"], let y2 = rhs["y"] {
+            let resultx = x1 + x2
+            let resulty = y1 + y2
+            return ["x" : resultx, "y" : resulty]
+        }
+    }
+    
+    func subtract(lhs: Int, rhs: Int) -> Int {
+        return lhs - rhs
+    }
+    
+    func subtract(lhs: (Int, Int), rhs: (Int, Int)) -> (Int, Int) {
+        return (lhs.0 - rhs.0, lhs.1 - rhs.1)
+    }
+    
+    func subtract(lhs: [String: Int], rhs: [String: Int]) -> [String: Int] {
+        if let x1 = lhs["x"], let x2 = rhs["x"],
+           let y1 = lhs["y"], let y2 = rhs["y"] {
+            let resultx = x1 - x2
+            let resulty = y1 - y2
+            return ["x" : resultx, "y" : resulty]
+        }
+    }
+    
+    // int + int
+    func multiply(lhs: Int, rhs: Int) -> Int {
+        return lhs * rhs
+    }
+    
+    //array
+    func multiply(_ numbers: [Int]) -> Int {
+        var sum = 1
+        for int in numbers {
+            sum *= int
+        }
+        return sum
+    }
+    
+    divide(){}
+    
+    mathOp(){}
+    
+    count(){}
+    
+    avg(){}
 }
-
+//methods: add, subtract, multiply, divide, mathOp, count, avg
 //: Don't change the name of this object (`calc`); it's used in all the tests.
 let calc = Calculator()
 
